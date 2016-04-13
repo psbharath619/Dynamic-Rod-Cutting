@@ -27,9 +27,11 @@ class rodcut
 		int[] solution = new int[n + 1];
 		solution[0] = 0;
 
-		for (int i = 1; i <= n; i++) {
+		for (int i = 1; i <= n; i++) 
+		{
 			int max = -1;
-			for (int j = 1; j <=i; j++) {
+			for (int j = 1; j <=i; j++) 
+			{
 				max = Math.max(max, p[j] + solution[i - j]);
 				solution[i] = max;
 			}
@@ -44,13 +46,13 @@ class rodcut
 		String path="1.txt";
 		FileInputStream in=null;
 		long endTime, startTime;
-		//int[] p=new int[11]; 
-		int[] p={0,1,5,8,9,10,17,17,20,24,30};
-		
-		/*for(int i=1;i<11;i++)
+		int[] p = new int[51]; 
+		//int[] p={0,1,5,8,9,10,17,17,20,24,30};
+		p[0]=0;
+		for(int i=1;i<=50;i++)
 		{
 			p[i]=ran.nextInt(20);		
-		}*/
+		}
 
 		try
 		{
@@ -60,7 +62,7 @@ class rodcut
 		String c;
 		int count=1;
 		System.out.println();
-		System.out.println("#SNo\tBF\tDYN");
+		System.out.println("#SNo\t\tBF\t\tDYN");
 		System.out.println();
 		while((c=br.readLine())!=".")
 		{	
@@ -69,19 +71,20 @@ class rodcut
 			//System.out.println(x	+"\t");
 			
 			System.out.print(count+"\t");	
-			startTime = System.nanoTime();
-
+			startTime =System.currentTimeMillis();
 			computeprice(p,x);
 			//System.out.print(computeprice(p,x)+"\t");
-			endTime = System.nanoTime();
-			System.out.print(endTime-startTime+"\t");
+			endTime = System.currentTimeMillis();
+			//System.out.print("\t-\t");
+			System.out.print((endTime-startTime)/ 1000.0 +"\t");
 
-			startTime = System.nanoTime();
+			startTime =System.currentTimeMillis();
 			computeprice_dyn(p,x);
 			//System.out.println(computeprice_dyn(p,x));
 
-			endTime = System.nanoTime();
-			System.out.println(endTime-startTime);
+			endTime = System.currentTimeMillis();
+			
+			System.out.println((endTime-startTime)/ 1000.0);
 			count++;
 		}
 		System.out.println();
